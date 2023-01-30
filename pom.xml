@@ -13,6 +13,7 @@
     <modules>
         <module>jw-quick-start</module>
         <module>jw-mockito</module>
+        <module>jw-spring-boot</module>
     </modules>
 
     <properties>
