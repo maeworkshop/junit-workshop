@@ -3,7 +3,6 @@ package com.memresen.jw.mockito;
 import com.maemresen.jw.mockito.service.PersonService;
 import com.maemresen.jw.mockito.service.domain.Person;
 import com.maemresen.jw.mockito.service.exception.BusinessException;
-import com.maemresen.jw.mockito.service.exception.InvalidPersonNameException;
 import com.maemresen.jw.mockito.service.impl.PersonServiceImpl;
 import com.maemresen.jw.mockito.service.repository.PersonRepository;
 import org.junit.jupiter.api.Assertions;
