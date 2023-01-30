@@ -1,4 +1,4 @@
-package com.maemresen.jw.mockito.exception;
+package com.maemresen.jw.mockito.service.exception;
 
 public class BusinessException extends Exception {
 

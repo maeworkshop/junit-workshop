@@ -1,4 +1,4 @@
-package com.maemresen.jw.mockito.domain;
+package com.maemresen.jw.mockito.service.domain;
 
 public class Person {
 
