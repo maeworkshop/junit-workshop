@@ -14,7 +14,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>junit-basic-it-examples</module>
-        <module>junit-spring-boot-it-examples</module>
+        <module>junit-it-basics</module>
+        <module>junit-it-spring-boot</module>
+        <module>junit-it-testcontainers</module>
     </modules>
 </project>
