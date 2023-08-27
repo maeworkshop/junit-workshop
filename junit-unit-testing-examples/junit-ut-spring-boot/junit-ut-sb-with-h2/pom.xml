@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>junit-ut-sb-with-h2</artifactId>
+    <name>Unit Testing with Junit and SpringBoot with H2</name>
 
     <properties>
         <spring.boot.version>3.0.2</spring.boot.version>

@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>junit-ut-spring-boot</artifactId>
+    <name>Unit Testing with Junit and SpringBoot</name>
     <packaging>pom</packaging>
 
     <modules>

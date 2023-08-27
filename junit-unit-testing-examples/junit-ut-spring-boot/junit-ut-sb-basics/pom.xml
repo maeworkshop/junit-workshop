@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>junit-ut-sb-basics</artifactId>
+    <name>Unit Testing with Junit and SpringBoot Basics</name>
 
     <properties>
         <spring.boot.version>3.0.2</spring.boot.version>

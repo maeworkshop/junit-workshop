@@ -8,7 +8,7 @@
         <artifactId>junit-workshop</artifactId>
         <version>1.0-SNAPSHOT</version>
         <packaging>pom</packaging>
-        <name>Examples about how to use JUNIT</name>
+        <name>Examples about how to use Juni</name>
 
     <modules>
         <module>junit-unit-testing-examples</module>

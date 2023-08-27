@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>junit-it-basics</artifactId>
+    <name>Integration Testing with Junit Basics</name>
 
     <properties>
         <junit.version>5.8.1</junit.version>

@@ -11,9 +11,7 @@
     </parent>
 
     <artifactId>junit-it-tc-basics</artifactId>
-
-    <name>Basics</name>
-    <description>An example simplest test container usage example with Redis Container</description>
+    <name>Integration Testing with Junit Basics</name>
 
     <properties>
         <java.version>17</java.version>

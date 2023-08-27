@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>junit-unit-testing-examples</artifactId>
+    <name>Unit Test Examples</name>
     <packaging>pom</packaging>
 
     <modules>
