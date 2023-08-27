@@ -14,7 +14,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>tc-sb-postgresql</module>
-        <module>tc-sb-remote-docker</module>
+        <module>junit-it-tc-sb-postgresql</module>
+        <module>junit-it-tc-sb-remote-docker</module>
     </modules>
 </project>
