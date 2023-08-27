@@ -12,6 +12,7 @@
 
     <modules>
         <module>junit-unit-testing-examples</module>
+        <module>junit-integration-testing-examples</module>
     </modules>
 
     <properties>
