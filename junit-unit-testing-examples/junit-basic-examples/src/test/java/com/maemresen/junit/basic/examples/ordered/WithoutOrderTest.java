@@ -2,6 +2,9 @@ package com.maemresen.junit.basic.examples.ordered;
 
 import org.junit.jupiter.api.Test;
 
+// This class doesn't specify a custom method order.
+// Therefore, JUnit may use the default orderer or any orderer specified in a configuration file.
+// Without a specific orderer, there's no guaranteed execution order.
 class WithoutOrderTest {
 
     @Test

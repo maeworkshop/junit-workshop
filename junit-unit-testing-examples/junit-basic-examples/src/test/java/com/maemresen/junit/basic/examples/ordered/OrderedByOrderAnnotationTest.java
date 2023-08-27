@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+// This class specifies a custom method order using the OrderAnnotation orderer.
+// The tests in this class will be executed based on the @Order annotation.
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class OrderedByOrderAnnotationTest {
 

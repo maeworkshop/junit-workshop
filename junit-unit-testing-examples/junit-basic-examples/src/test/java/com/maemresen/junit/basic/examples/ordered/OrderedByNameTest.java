@@ -4,6 +4,8 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+// This class specifies a custom method order using the MethodName orderer.
+// The tests in this class will be executed based on their method names in ascending order.
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class OrderedByNameTest {
 
