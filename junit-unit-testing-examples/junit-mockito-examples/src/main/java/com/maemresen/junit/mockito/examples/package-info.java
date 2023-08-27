@@ -1,0 +1,1 @@
+package com.maemresen.junit.mockito.examples;

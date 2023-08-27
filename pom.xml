@@ -11,9 +11,7 @@
         <name>Examples about how to use JUNIT</name>
 
     <modules>
-        <module>jw-quick-start</module>
-        <module>jw-mockito</module>
-        <module>jw-spring-boot</module>
+        <module>junit-unit-testing-examples</module>
     </modules>
 
     <properties>
