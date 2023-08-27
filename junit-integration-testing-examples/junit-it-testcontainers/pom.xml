@@ -15,7 +15,6 @@
 
     <modules>
         <module>junit-it-tc-basics</module>
-        <module>junit-it-tc-redis</module>
         <module>junit-it-tc-spring-boot</module>
     </modules>
 
