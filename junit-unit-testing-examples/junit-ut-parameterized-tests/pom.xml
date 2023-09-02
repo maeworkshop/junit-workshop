@@ -10,8 +10,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>junit-ut-basics</artifactId>
-    <name>Unit Testing with Junit Basics</name>
+    <artifactId>junit-ut-parameterized-tests</artifactId>
+    <name>Unit Testing with Junit Parameterized Tests</name>
 
     <properties>
         <junit.version>5.8.1</junit.version>
@@ -23,6 +23,19 @@
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- OPTIONAL, NOT REQUIRED FOR TESTING -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.28</version>
         </dependency>
     </dependencies>
 </project>

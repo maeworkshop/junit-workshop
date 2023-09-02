@@ -16,6 +16,7 @@
 
     <modules>
         <module>junit-ut-basics</module>
+        <module>junit-ut-parameterized-tests</module>
         <module>junit-ut-mockito</module>
         <module>junit-ut-spring-boot</module>
     </modules>
