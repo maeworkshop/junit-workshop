@@ -1,6 +1,5 @@
 package com.maemresen.junit.ut.pt;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 
@@ -12,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MonthTest {
 
-    @DisplayName("getValue should return valid range for months")
     @ParameterizedTest(name = "{0}.getValue() must be between 1 and 12")
     @EnumSource(Month.class)
     void getValue_ShouldReturnValidRangeForMonths(Month month) {
