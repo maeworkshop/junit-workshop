@@ -1,4 +1,4 @@
-package com.maemresen.junit.ut.pt;
+package com.maemresen.junit.ut.pt.helper;
 
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;

@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class SharedContainerTest {
 
     @Container
-    static final GenericContainer<?> SHARED_CONTAINER = new GenericContainer<>("hello-world:latest");
+    static final GenericContainer<?> SHARED_CONTAINER = new GenericContainer<>("nginx:mainline-alpine3.18-slim");
 
     private static String initialContainerId;
 
@@ -30,11 +30,15 @@ class SharedContainerTest {
 
     @Test
     void test_dummyTest1() {
-        assertEquals(initialContainerId, SHARED_CONTAINER.getContainerId(), "Container ID should be same for test 1");
+        assertNotNewContainerCreated(SHARED_CONTAINER);
     }
 
     @Test
     void test_dummyTest2() {
-        assertEquals(initialContainerId, SHARED_CONTAINER.getContainerId(), "Container ID should be same for test 2");
+        assertNotNewContainerCreated(SHARED_CONTAINER);
+    }
+
+    protected void assertNotNewContainerCreated(GenericContainer<?> container) {
+        assertEquals(initialContainerId, container.getContainerId(), "Container ID should be same");
     }
 }

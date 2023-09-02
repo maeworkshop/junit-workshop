@@ -1,5 +1,6 @@
 package com.maemresen.junit.ut.pt;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 
@@ -11,7 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MonthTest {
 
-    @ParameterizedTest
+    @DisplayName("getValue should return valid range for months")
+    @ParameterizedTest(name = "{0}.getValue() must be between 1 and 12")
     @EnumSource(Month.class)
     void getValue_ShouldReturnValidRangeForMonths(Month month) {
         int monthNumber = month.getValue();
@@ -20,13 +22,13 @@ class MonthTest {
                 () -> assertTrue(monthNumber <= 12));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0} must have 30 days")
     @EnumSource(value = Month.class, names = {"APRIL", "JUNE", "SEPTEMBER", "NOVEMBER"})
     void getLength_ShouldReturn30ForMonthsHaving30Days(Month month) {
         assertEquals(30, month.length(false));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0} must have 31 days")
     @EnumSource(
             value = Month.class,
             names = {"APRIL", "JUNE", "SEPTEMBER", "NOVEMBER", "FEBRUARY"},
@@ -36,7 +38,7 @@ class MonthTest {
         assertEquals(31, month.length(false));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0} must ends with BER")
     @EnumSource(
             value = Month.class,
             names = ".+BER",

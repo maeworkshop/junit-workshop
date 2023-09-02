@@ -10,19 +10,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class NumberUtilsTest {
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "NumberUtils.isOdd({0}) should return true")
     @ValueSource(ints = {1, 3, 5, -3, 15, Integer.MAX_VALUE})
     void isOdd_ShouldReturnTrueForOddNumbers(int number) {
         assertTrue(NumberUtils.isOdd(number));
     }
 
-    @ParameterizedTest
+
+    @ParameterizedTest(name = "NumberUtils.isOdd({0}) should return false")
     @ValueSource(ints = {2, 4, 6, -2, 0, Integer.MIN_VALUE})
     void isOdd_ShouldReturnFalseForEvenNumbers(int number) {
         assertFalse(NumberUtils.isOdd(number));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "NumberUtils.isOdd({0}) should return {1}")
     @CsvSource(
             value = {
                     "1:true",
@@ -37,7 +38,7 @@ class NumberUtilsTest {
         assertEquals(expected, NumberUtils.isOdd(number));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "NumberUtils.add({0}, {1}) should return {2}")
     @CsvSource(
             value = {
                     "1:2:3",

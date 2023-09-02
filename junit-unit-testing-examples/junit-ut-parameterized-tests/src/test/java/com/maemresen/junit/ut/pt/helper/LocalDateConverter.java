@@ -1,4 +1,4 @@
-package com.maemresen.junit.ut.pt;
+package com.maemresen.junit.ut.pt.helper;
 
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.params.converter.ArgumentConversionException;
