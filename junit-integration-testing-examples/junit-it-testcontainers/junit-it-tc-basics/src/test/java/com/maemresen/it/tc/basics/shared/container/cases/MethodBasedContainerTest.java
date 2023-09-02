@@ -1,4 +1,4 @@
-package com.maemresen.it.tc.basics;
+package com.maemresen.it.tc.basics.shared.container.cases;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
  * @author Emre Şen (maemresen@yazilim.vip), 22/01/2023
  */
 @Testcontainers
-class NonSharedContainerTest {
+class MethodBasedContainerTest {
 
     private static final Set<String> CREATED_CONTAINER_IDS = new HashSet<>();
 

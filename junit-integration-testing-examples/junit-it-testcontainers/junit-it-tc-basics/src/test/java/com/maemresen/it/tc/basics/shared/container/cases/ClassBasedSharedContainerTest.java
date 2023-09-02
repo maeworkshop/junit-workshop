@@ -1,10 +1,6 @@
-package com.maemresen.it.tc.basics;
-
-import com.github.dockerjava.api.command.CreateContainerCmd;
-import java.util.function.Consumer;
+package com.maemresen.it.tc.basics.shared.container.cases;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.junit.jupiter.Container;
@@ -16,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author Emre Şen (maemresen@yazilim.vip), 22/01/2023
  */
 @Testcontainers
-class SharedContainerTest {
+class ClassBasedSharedContainerTest {
 
     @Container
     static final GenericContainer<?> SHARED_CONTAINER = new GenericContainer<>("nginx:mainline-alpine3.18-slim");
@@ -30,15 +26,15 @@ class SharedContainerTest {
 
     @Test
     void test_dummyTest1() {
-        assertNotNewContainerCreated(SHARED_CONTAINER);
+        assertNotNewContainerCreated();
     }
 
     @Test
     void test_dummyTest2() {
-        assertNotNewContainerCreated(SHARED_CONTAINER);
+        assertNotNewContainerCreated();
     }
 
-    protected void assertNotNewContainerCreated(GenericContainer<?> container) {
-        assertEquals(initialContainerId, container.getContainerId(), "Container ID should be same");
+    private void assertNotNewContainerCreated() {
+        assertEquals(initialContainerId, SHARED_CONTAINER.getContainerId(), "Container ID should be same");
     }
 }
