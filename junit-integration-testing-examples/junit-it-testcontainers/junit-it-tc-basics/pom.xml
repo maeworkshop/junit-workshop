@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>junit-it-tc-basics</artifactId>
-    <name>Integration Testing with Junit Basics</name>
+    <name>IT with Junit and Testcontainers Basics</name>
 
     <properties>
         <java.version>17</java.version>

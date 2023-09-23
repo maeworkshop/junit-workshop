@@ -12,7 +12,7 @@
 
     <artifactId>junit-ut-mockito</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Unit Testing with Junit and Mockito</name>
+    <name>UT with Junit and Mockito</name>
 
 
     <properties>

@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>junit-it-testcontainers</artifactId>
-    <name>Integration Testing with Junit and Testcontainers</name>
+    <name>IT with Junit and Testcontainers</name>
     <packaging>pom</packaging>
 
     <modules>

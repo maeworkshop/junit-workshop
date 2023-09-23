@@ -18,7 +18,7 @@ class ContainerNetworkingConfigTest {
                 final GenericContainer<?> nginxContainer = new GenericContainer<>("nginx:1.17.10-alpine");
                 final GenericContainer<?> curlContainer = new GenericContainer<>("curlimages/curl:8.2.1")
         ) {
-            final String expectedResponse = "resopnse";
+            final String expectedResponse = "{name: Emre, surname: Sen}";
             final String nginxNetworkAlias = "app-nginx";
             final int nginxNetworkPort = 8080;
             final String nginxHttpRequestListenerCmd = """
@@ -41,7 +41,8 @@ class ContainerNetworkingConfigTest {
             final var finalUrl = String.format("http://%s:%s", nginxNetworkAlias, nginxNetworkPort);
             System.out.println("CURL container will try to reach " + finalUrl);
             var execResult = curlContainer.execInContainer("curl", finalUrl);
-            String response = execResult.getStdout();
+            final var response = execResult.getStdout();
+            System.out.println("Result: "+ response);
             assertEquals(expectedResponse, response, "response must be " + expectedResponse);
         }
     }

@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>junit-ut-parameterized-tests</artifactId>
-    <name>Unit Testing with Junit Parameterized Tests</name>
+    <name>UT with Junit Parameterized Tests</name>
 
     <properties>
         <junit.version>5.8.1</junit.version>
