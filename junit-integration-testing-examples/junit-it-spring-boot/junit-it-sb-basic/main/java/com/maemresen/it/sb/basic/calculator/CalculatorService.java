@@ -1,4 +1,4 @@
-package com.maemresen.it.sb.with.database.calculator;
+package com.maemresen.it.sb.basic.calculator;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

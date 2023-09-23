@@ -1,4 +1,4 @@
-package com.maemresen.it.sb.with.database.calculator;
+package com.maemresen.it.sb.basic.calculator;
 
 import org.springframework.stereotype.Service;
 

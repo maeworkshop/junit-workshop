@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>junit-ut-basics</artifactId>
-    <name>Unit Testing with Junit Basics</name>
+    <name>UT with Junit Basics</name>
 
     <properties>
         <junit.version>5.8.1</junit.version>

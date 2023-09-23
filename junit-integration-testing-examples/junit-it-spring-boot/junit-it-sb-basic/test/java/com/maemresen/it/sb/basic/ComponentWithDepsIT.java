@@ -1,8 +1,8 @@
-package com.maemresen.it.sb.with.database;
+package com.maemresen.it.sb.basic;
 
-import com.maemresen.it.sb.with.database.calculator.CalculatorService;
-import com.maemresen.it.sb.with.database.calculator.MathService;
-import com.maemresen.it.sb.with.database.calculator.TrigonometryService;
+import com.maemresen.it.sb.basic.calculator.CalculatorService;
+import com.maemresen.it.sb.basic.calculator.MathService;
+import com.maemresen.it.sb.basic.calculator.TrigonometryService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

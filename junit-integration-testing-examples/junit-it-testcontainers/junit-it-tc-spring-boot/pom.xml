@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>junit-it-tc-spring-boot</artifactId>
-    <name>Integration Testing with Junit, Testcontainers and SpringBoot</name>
+    <name>IT with Junit, Testcontainers and SpringBoot</name>
     <packaging>pom</packaging>
 
     <modules>

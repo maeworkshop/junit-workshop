@@ -1,10 +1,5 @@
 package com.maemresen.it.sb.with.database;
 
-import com.maemresen.it.sb.with.database.persistence.Audit;
-import com.maemresen.it.sb.with.database.persistence.AuditRepository;
-import com.maemresen.it.sb.with.database.persistence.AuditUtils;
-import com.maemresen.it.sb.with.database.persistence.Person;
-import com.maemresen.it.sb.with.database.persistence.PersonService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(properties = "spring.jpa.show-sql=true")
-class TransactionalIT {
+class TransactionalCrudIT {
 
     @Autowired
     private PersonService personService;

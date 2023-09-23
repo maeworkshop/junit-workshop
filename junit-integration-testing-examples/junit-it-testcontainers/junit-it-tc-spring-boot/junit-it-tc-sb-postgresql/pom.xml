@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>junit-it-tc-sb-postgresql</artifactId>
-    <name>Integration Testing with Junit, Testcontainers, SpringBoot and PostgreSQL</name>
+    <name>IT with Junit, Testcontainers, SpringBoot and PostgreSQL</name>
 
     <properties>
         <testcontainers.version>1.18.0</testcontainers.version>

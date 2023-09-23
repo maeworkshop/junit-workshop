@@ -1,4 +1,4 @@
-package com.maemresen.it.sb.with.database.persistence;
+package com.maemresen.it.sb.with.database;
 
 import lombok.experimental.UtilityClass;
 

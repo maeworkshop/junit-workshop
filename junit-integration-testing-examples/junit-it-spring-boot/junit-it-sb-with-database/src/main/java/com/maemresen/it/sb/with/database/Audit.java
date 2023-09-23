@@ -1,4 +1,4 @@
-package com.maemresen.it.sb.with.database.persistence;
+package com.maemresen.it.sb.with.database;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

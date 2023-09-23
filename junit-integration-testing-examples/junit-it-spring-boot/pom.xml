@@ -11,10 +11,11 @@
     </parent>
 
     <artifactId>junit-it-spring-boot</artifactId>
-    <name>Integration Testing with Junit and SpringBoot</name>
+    <name>IT with Junit and SpringBoot</name>
     <packaging>pom</packaging>
 
     <modules>
+        <module>junit-it-sb-basic</module>
         <module>junit-it-sb-with-database</module>
     </modules>
 </project>
