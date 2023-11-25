@@ -4,16 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.maemresen</groupId>
-        <artifactId>junit-ut-spring-boot</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-
+    <groupId>com.maemresen</groupId>
     <artifactId>junit-ut-sb-basics</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <name>UT with Junit and SpringBoot Basics</name>
 
     <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <spring.boot.version>3.0.2</spring.boot.version>
     </properties>
 

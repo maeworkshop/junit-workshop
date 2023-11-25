@@ -4,16 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.maemresen</groupId>
-        <artifactId>junit-it-tc-spring-boot</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-
+    <groupId>com.maemresen</groupId>
     <artifactId>junit-it-tc-sb-postgresql</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <name>IT with Junit, Testcontainers, SpringBoot and PostgreSQL</name>
 
     <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <testcontainers.version>1.18.0</testcontainers.version>
         <spring.boot.version>3.1.2</spring.boot.version>
         <org.apache.maven.surfire-plugin.version>3.1.2</org.apache.maven.surfire-plugin.version>

@@ -11,8 +11,6 @@ class HelloWorldTest {
     @Test
     void successTest() {
         String str = "Junit is working fine";
-        // This assertion checks if the value of "str" is "Junit is working fine".
-        // Since it is, this test will pass.
         assertEquals("Junit is working fine", str, "Expected string to match the defined value");
     }
 }
