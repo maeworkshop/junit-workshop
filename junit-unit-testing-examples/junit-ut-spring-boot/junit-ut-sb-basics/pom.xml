@@ -10,9 +10,10 @@
     <name>UT with Junit and SpringBoot Basics</name>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <spring.boot.version>3.0.2</spring.boot.version>
+        <java.version>21</java.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <spring.boot.version>3.2.0</spring.boot.version>
     </properties>
 
     <dependencyManagement>

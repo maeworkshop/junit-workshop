@@ -10,8 +10,9 @@
     <name>IT with Junit and Spring Boot Basics</name>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <java.version>21</java.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <org.springframework.boot.version>3.1.2</org.springframework.boot.version>
         <org.apache.maven.failsafe-plugin.version>3.1.2</org.apache.maven.failsafe-plugin.version>
     </properties>
