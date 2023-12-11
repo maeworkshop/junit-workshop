@@ -1,43 +1,60 @@
 package com.maemresen.it.tc.basics;
 
+import lombok.extern.slf4j.Slf4j;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
 import org.testcontainers.containers.GenericContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
-import org.testcontainers.lifecycle.Startable;
 
-import java.util.Set;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-@Testcontainers
+@Slf4j
 class DependentContainerTest {
+	GenericContainer<?> redisContainer;
+	GenericContainer<?> nginxContainer;
 
-    @Container
-    static final GenericContainer<?> REDIS_CONTAINER = new GenericContainer<>("redis:5.0.3-alpine");
+	@BeforeEach
+	void init(TestInfo testInfo) {
+		final var testName = testInfo.getDisplayName();
+		redisContainer = getContainer("redis:5.0.3-alpine", "RedisContainer" + testName);
+		nginxContainer = getContainer("nginx:1.17.10-alpine", "NginxContainer" + testName);
+	}
 
-    @Container
-    static final GenericContainer<?> NGINX_CONTAINER = new GenericContainer<>("nginx:1.17.10-alpine");
+	@AfterEach
+	void tearDown(){
+		redisContainer.stop();
+		nginxContainer.stop();
+	}
 
-    static {
-        REDIS_CONTAINER.withExposedPorts(6379);
-        REDIS_CONTAINER.withCreateContainerCmdModifier(cmd -> {
-            System.out.println("Creating redis container");
-        });
+	private GenericContainer<?> getContainer(final String image, final String name) {
+		try(final var container = new GenericContainer<>(image)) {
+			container.withCreateContainerCmdModifier(cmd -> cmd.withName(name));
+			return container;
+		}
+	}
 
-        NGINX_CONTAINER.withExposedPorts(80);
-        NGINX_CONTAINER.withCreateContainerCmdModifier(cmd -> {
-            System.out.println("Creating nginx container");
-        });
-        NGINX_CONTAINER.dependsOn(REDIS_CONTAINER);
-    }
+	@Test
+	@DisplayName("WithDependency")
+	void redisContainerShouldBeCreated() {
+		nginxContainer.dependsOn(redisContainer);
+		nginxContainer.start();
+		assertAll(
+			() -> assertTrue(redisContainer.isCreated()),
+			() -> assertTrue(nginxContainer.isCreated())
+		);
+	}
 
-    @Test
-    void test() {
-        Set<Startable> dependencies = NGINX_CONTAINER.getDependencies();
-        assertNotNull(dependencies);
-        assertTrue(dependencies.contains(REDIS_CONTAINER), "nginx should depend on redis");
-    }
+	@Test
+	@DisplayName("NoDependency")
+	void redisContainerShouldNotBeCreated() {
+		nginxContainer.start();
+		assertAll(
+			() -> assertFalse(redisContainer.isCreated()),
+			() -> assertTrue(nginxContainer.isCreated())
+		);
+	}
 }
+

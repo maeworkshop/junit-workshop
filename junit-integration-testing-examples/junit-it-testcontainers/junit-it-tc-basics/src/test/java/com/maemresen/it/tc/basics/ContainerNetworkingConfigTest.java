@@ -3,47 +3,84 @@ package com.maemresen.it.tc.basics;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.Network;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Testcontainers
 class ContainerNetworkingConfigTest {
 
-    static final Network NETWORK = Network.newNetwork();
+	// Constants for container images, expected responses, aliases, and ports
+	private static final String NGINX_IMAGE = "nginx:1.17.10-alpine";
+	private static final String CURL_IMAGE = "curlimages/curl:8.2.1";
+	private static final String EXPECTED_RESPONSE = "{name: Emre, surname: Sen}";
+	private static final String NGINX_NETWORK_ALIAS = "app-nginx";
+	private static final int NGINX_NETWORK_PORT = 8080;
 
-    @Test
-    void expectResponseFromNginx() throws IOException, InterruptedException {
-        try (
-                final GenericContainer<?> nginxContainer = new GenericContainer<>("nginx:1.17.10-alpine");
-                final GenericContainer<?> curlContainer = new GenericContainer<>("curlimages/curl:8.2.1")
-        ) {
-            final String expectedResponse = "{name: Emre, surname: Sen}";
-            final String nginxNetworkAlias = "app-nginx";
-            final int nginxNetworkPort = 8080;
-            final String nginxHttpRequestListenerCmd = """
-                        while true; 
-                        do 
-                            printf 'HTTP/1.1 200 OK\\n\\n%s' | nc -l -p %d;
-                        done
-                    """.formatted(expectedResponse, nginxNetworkPort);
-            System.out.println("Created nginx command is: " + nginxHttpRequestListenerCmd);
-            nginxContainer.withNetwork(NETWORK);
-            nginxContainer.withNetworkAliases(nginxNetworkAlias);
-            nginxContainer.withCommand("/bin/sh", "-c", nginxHttpRequestListenerCmd);
+	// Network instance to ensure both containers can communicate
+	private static final Network NETWORK = Network.newNetwork();
 
-            curlContainer.withNetwork(NETWORK);
-            curlContainer.withCommand("sleep", "infinity");
+	// Container definitions
+	@Container
+	static final GenericContainer<?> nginxContainer = new GenericContainer<>(NGINX_IMAGE);
 
-            nginxContainer.start();
-            curlContainer.start();
+	@Container
+	static final GenericContainer<?> curlContainer = new GenericContainer<>(CURL_IMAGE);
 
-            final var finalUrl = String.format("http://%s:%s", nginxNetworkAlias, nginxNetworkPort);
-            System.out.println("CURL container will try to reach " + finalUrl);
-            var execResult = curlContainer.execInContainer("curl", finalUrl);
-            final var response = execResult.getStdout();
-            System.out.println("Result: "+ response);
-            assertEquals(expectedResponse, response, "response must be " + expectedResponse);
-        }
-    }
+	static {
+		log.info("Configuring containers...");
+		configureNginxContainer();
+		configureCurlContainer();
+		log.info("Containers configured.");
+	}
+
+	private static void configureNginxContainer() {
+		final var nginxHttpRequestListenerCmd = """
+                while true;
+                do
+                    printf 'HTTP/1.1 200 OK\\n\\n%s' | nc -l -p %d;
+                done
+            """.formatted(EXPECTED_RESPONSE, NGINX_NETWORK_PORT);
+
+		nginxContainer.withNetwork(NETWORK)
+			.withNetworkAliases(NGINX_NETWORK_ALIAS)
+			.withCommand("/bin/sh", "-c", nginxHttpRequestListenerCmd);
+
+		log.info("Nginx container configured to listen on port {} and return response: {}", NGINX_NETWORK_PORT, EXPECTED_RESPONSE);
+	}
+
+	private static void configureCurlContainer() {
+		curlContainer.dependsOn(nginxContainer)
+			.withNetwork(NETWORK)
+			.withCommand("sleep", "infinity");
+
+		log.info("Curl container configured to depend on Nginx container.");
+	}
+
+	@Test
+	void expectResponseFromNginx() throws IOException, InterruptedException {
+		log.info("Executing test: expectResponseFromNginx...");
+
+		final var response = fetchResponse();
+
+		assertEquals(EXPECTED_RESPONSE, response, "Response must be " + EXPECTED_RESPONSE);
+		log.info("Test passed. Expected response received.");
+	}
+
+	private String fetchResponse() throws IOException, InterruptedException {
+		final var url = String.format("http://%s:%s", NGINX_NETWORK_ALIAS, NGINX_NETWORK_PORT);
+		log.info("Fetching response from URL: {}", url);
+
+		final var execResult = curlContainer.execInContainer("curl", url);
+		final var response = execResult.getStdout();
+
+		log.info("Response received: {}", response);
+		return response;
+	}
 }
