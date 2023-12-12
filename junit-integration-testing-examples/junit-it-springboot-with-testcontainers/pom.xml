@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.maemresen</groupId>
-    <artifactId>junit-it-tc-sb-postgresql</artifactId>
+    <artifactId>junit-it-springboot-with-testcontainers</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>IT with Junit, Testcontainers, SpringBoot and PostgreSQL</name>
 
