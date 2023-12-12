@@ -5,15 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.maemresen</groupId>
-    <artifactId>junit-ut-sb-with-h2</artifactId>
+    <artifactId>junit-it-springboot-with-database</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>UT with Junit and SpringBoot with H2</name>
+    <name>IT with Junit, SpringBoot and Database</name>
 
     <properties>
         <java.version>21</java.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <spring.boot.version>3.2.0</spring.boot.version>
+        <org.springframework.boot.version>3.2.0</org.springframework.boot.version>
+        <org.apache.maven.failsafe-plugin.version>3.1.2</org.apache.maven.failsafe-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -21,7 +22,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
+                <version>${org.springframework.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -38,21 +39,14 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>2.2.220</version>
-            <scope>test</scope>
-        </dependency>
-
 
         <!-- OPTIONAL, NOT REQUIRED FOR TESTING -->
         <dependency>
@@ -61,5 +55,28 @@
         </dependency>
     </dependencies>
 
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${org.apache.maven.failsafe-plugin.version}</version>
+                <configuration>
+                    <includes>
+                        <include>**/*IT.java</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>integration-test</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

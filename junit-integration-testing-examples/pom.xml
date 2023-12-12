@@ -4,7 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.maemresen</groupId>
+    <parent>
+        <groupId>com.maemresen</groupId>
+        <artifactId>junit-workshop</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <artifactId>junit-integration-testing-examples</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Integration Test Examples</name>
@@ -12,7 +17,9 @@
 
     <modules>
         <module>junit-it-basics</module>
-        <module>junit-it-spring-boot</module>
+        <module>junit-it-springboot-basic</module>
+        <module>junit-it-springboot-with-database</module>
+        <module>junit-it-springboot-with-testcontainers</module>
         <module>junit-it-testcontainers</module>
     </modules>
 </project>
