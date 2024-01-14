@@ -10,10 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class MethodSourceTest {
 
-    private static boolean isBlank(String str) {
-        return str == null || str.trim().isEmpty();
-    }
-
     private static Stream<Arguments> nonBlankStringsProvider() {
         return Stream.of(
                 Arguments.of("method-a"),
@@ -25,6 +21,6 @@ class MethodSourceTest {
     @ParameterizedTest
     @MethodSource("nonBlankStringsProvider")
     void methodSourceTest(String str) {
-        assertFalse(isBlank(str));
+        assertFalse(str == null || str.trim().isEmpty());
     }
 }
