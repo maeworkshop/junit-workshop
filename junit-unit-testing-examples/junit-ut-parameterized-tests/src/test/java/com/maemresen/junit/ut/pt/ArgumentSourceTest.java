@@ -32,16 +32,18 @@ class ArgumentSourceTest {
         return str == null || str.trim().isEmpty();
     }
 
-    @Target({ElementType.ANNOTATION_TYPE, ElementType.METHOD})
-    @Retention(RetentionPolicy.RUNTIME)
-    @ArgumentsSource(NonBlankRandomStringArgumentProvider.class)
-    @interface NonBlankRandomStringSource {
-    }
+
 
     @ParameterizedTest
     @ArgumentsSource(NonBlankRandomStringArgumentProvider.class)
     void argumentSourceTest(String str) {
         assertFalse(isBlank(str));
+    }
+
+    @Target({ElementType.ANNOTATION_TYPE, ElementType.METHOD})
+    @Retention(RetentionPolicy.RUNTIME)
+    @ArgumentsSource(NonBlankRandomStringArgumentProvider.class)
+    @interface NonBlankRandomStringSource {
     }
 
     @ParameterizedTest
