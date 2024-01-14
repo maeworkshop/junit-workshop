@@ -28,16 +28,10 @@ class ArgumentSourceTest {
         }
     }
 
-    private static boolean isBlank(String str) {
-        return str == null || str.trim().isEmpty();
-    }
-
-
-
     @ParameterizedTest
     @ArgumentsSource(NonBlankRandomStringArgumentProvider.class)
     void argumentSourceTest(String str) {
-        assertFalse(isBlank(str));
+        assertFalse(str == null || str.trim().isEmpty());
     }
 
     @Target({ElementType.ANNOTATION_TYPE, ElementType.METHOD})
@@ -49,6 +43,6 @@ class ArgumentSourceTest {
     @ParameterizedTest
     @NonBlankRandomStringSource
     void customAnnotationSourceTest(String str) {
-        assertFalse(isBlank(str));
+        assertFalse(str == null || str.trim().isEmpty());
     }
 }
