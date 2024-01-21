@@ -19,7 +19,5 @@
         <module>junit-it-basics</module>
         <module>junit-it-springboot-basic</module>
         <module>junit-it-springboot-with-database</module>
-        <module>junit-it-springboot-with-testcontainers</module>
-        <module>junit-it-testcontainers</module>
     </modules>
 </project>
